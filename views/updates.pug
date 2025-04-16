@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .container
+      h1 Create a Coffee List
+      a(href="/") Return to the homepage
+      
+      if error
+        .error= error
+      
+      form(action="/update-cobj", method="POST")
+        .form-group
+          label(for="name") Name:
+          input#name(type="text", name="name", required)
+        
+        .form-group
+          label(for="description") Coffee Brand/Type:
+          textarea#description(name="description", required)
+        
+        .form-group
+          label(for="status") Status:
+          select#status(name="status", required)
+            option(value="active") Using
+            option(value="inactive") Used
+            option(value="pending") Need to buy
+        
+        button(type="submit") Create Custom Object 

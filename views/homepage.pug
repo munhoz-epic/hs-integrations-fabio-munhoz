@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= title
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    .container
+      h1 Special Coffee List
+      a.button(href="/update-cobj") Add coffee!
+      if error
+        .error= error
+      if objects && objects.length > 0
+        table
+          thead
+            tr
+              th Coffee Brand
+              th Coffee Type
+              th Status
+          tbody
+            each obj in objects
+              tr
+                td= (obj.properties && obj.properties.name) ? obj.properties.name : 'N/A'
+                td= (obj.properties && obj.properties.description) ? obj.properties.description : 'N/A'
+                td= (obj.properties && obj.properties.status) ? obj.properties.status : 'N/A'
+      else
+        p No coffee lists found. Click "Add coffee!" to create one.
